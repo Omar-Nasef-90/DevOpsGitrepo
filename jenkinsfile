@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+    tools {
+        maven 'Maven' // Name configured in Global Tool Configuration
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/username/repository.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+    }
+}
